@@ -1,3 +1,4 @@
+
 # TypeRacer Clone Application
 
 <p align="center">
@@ -5,11 +6,9 @@
 </p>
 
 ## Overview
-
 This application is a typing game inspired by TypeRacer that allows users to practice their typing skills in both solo and multiplayer modes. It features a clean, modern interface built with Vue.js for the frontend and a Node.js/Express backend with PostgreSQL database support.
 
 ## Table of Contents
-
 - [Features](#features)
 - [Architecture](#architecture)
 - [Installation](#installation)
@@ -19,7 +18,6 @@ This application is a typing game inspired by TypeRacer that allows users to pra
 - [Contributing](#contributing)
 
 ## Features
-
 - **Solo Typing Practice**: Practice typing with random text passages from a database of stories
 - **Multiplayer Racing**: Compete against other players in real-time typing races
 - **Real-time Progress Tracking**: See your progress and compare with others during races
@@ -29,7 +27,6 @@ This application is a typing game inspired by TypeRacer that allows users to pra
 ## Architecture
 
 ### Backend
-
 - **Language/Framework**: Node.js with Express
 - **Database**: PostgreSQL
 - **Real-time Communication**: Socket.IO for multiplayer functionality
@@ -42,7 +39,6 @@ This application is a typing game inspired by TypeRacer that allows users to pra
   - `src/sockets`: Socket.IO event handlers for real-time functionality
 
 ### Frontend
-
 - **Framework**: Vue 3 with Composition API
 - **Routing**: Vue Router
 - **Styling**: TailwindCSS
@@ -56,35 +52,30 @@ This application is a typing game inspired by TypeRacer that allows users to pra
 ## Installation
 
 ### Prerequisites
-
 - Node.js (v14 or higher)
 - PostgreSQL (v12 or higher)
 
 ### Backend Setup
-
 1. Navigate to the backend directory:
-
    ```
    cd backend
    ```
 
 2. Install dependencies:
-
    ```
    npm install
    ```
 
 3. Create a `.env` file in the backend directory with the following environment variables:
-
    ```
    PORT=3000
    DATABASE_URL=postgres://username:password@localhost:5432/typeracer
    ```
 
 4. Set up the database:
-
    ```
    node src/config/migrate.js
+   node src/config/randomStories.js
    ```
 
 5. Start the server:
@@ -93,15 +84,13 @@ This application is a typing game inspired by TypeRacer that allows users to pra
    ```
 
 ### Frontend Setup
-
+#### The backend will run a production version. The steps below are for development purposes, for running the frontend on a different terminal using vite.
 1. Navigate to the frontend directory:
-
    ```
    cd frontend
    ```
 
 2. Install dependencies:
-
    ```
    npm install
    ```
@@ -114,7 +103,6 @@ This application is a typing game inspired by TypeRacer that allows users to pra
 ## Usage
 
 ### Solo Mode
-
 1. Navigate to the home page
 2. The application will load a random text passage from the database
 3. Start typing in the input field to begin the test
@@ -122,7 +110,6 @@ This application is a typing game inspired by TypeRacer that allows users to pra
 5. You can request a new text passage by clicking the refresh button
 
 ### Multiplayer Mode
-
 1. Navigate to the Race page
 2. Click "Join Queue" to enter a waiting room
 3. When the room fills with 4 players (or the timeout is reached), a countdown will begin
@@ -134,12 +121,10 @@ This application is a typing game inspired by TypeRacer that allows users to pra
 
 ### Endpoints
 
-#### GET /api/stories
-
-Returns a random story from the database.
+#### GET /api/stories?type=${type}
+Returns a random story from the database. Depending on the type. Options are multiplayer, time, or no type
 
 **Response:**
-
 ```json
 {
   "id": "uuid",
@@ -152,13 +137,11 @@ Returns a random story from the database.
 ### WebSocket Events
 
 #### Client to Server
-
 - `joinQueue`: Join the multiplayer queue
 - `updateProgress`: Send current progress to the server
 - `disconnect`: Handle player disconnection
 
 #### Server to Client
-
 - `playerJoined`: Notifies when a new player joins the room
 - `playerLeft`: Notifies when a player leaves
 - `countdown`: Countdown before race starts
@@ -169,7 +152,6 @@ Returns a random story from the database.
 ## Multiplayer System
 
 The application implements a room-based multiplayer system:
-
 1. Players join a queue via WebSocket
 2. The server places them in available rooms (up to 4 players per room)
 3. When a room is full, a countdown begins
@@ -178,9 +160,11 @@ The application implements a room-based multiplayer system:
 6. Players can see their position relative to others
 
 ## Contributing
-
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/amazing-feature`)
 3. Commit your changes (`git commit -m 'Add some amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
+
+# Youtube Video
+https://youtu.be/tTCXgEk2V3E
