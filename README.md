@@ -1,5 +1,5 @@
 
-# TypeRacer Clone Application
+# TypeRacer
 
 <p align="center">
   <img src="typerace-logo.jpeg" alt="TypeRace Logo" width="200"/>
